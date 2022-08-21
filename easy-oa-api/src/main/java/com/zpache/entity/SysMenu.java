@@ -1,11 +1,9 @@
 package com.zpache.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 
+import javax.validation.Valid;
 import java.util.Date;
 
 /**
@@ -16,7 +14,7 @@ import java.util.Date;
 @Data
 @TableName(value = "sys_menu")
 public class SysMenu {
-    @TableId(value = "id",type = IdType.AUTO)
+    @TableId(value = "id")
     private Long id;
     @TableField(value = "name")
     private String name;
@@ -24,7 +22,7 @@ public class SysMenu {
     private String icon;
     @TableField(value = "type")
     private Integer type;
-    @TableField(value = "parentId")
+    @TableField(value = "parent_Id")
     private Long parentId;
     @TableField(value = "route")
     private String route;
@@ -32,16 +30,17 @@ public class SysMenu {
     private String permission;
     @TableField(value = "sort")
     private Integer sort;
-    @TableField(value = "isDelete")
+    @TableLogic
     private Integer isDelete;
-    @TableField(value = "createTime")
+    @TableField(value = "create_time")
     private Date createTime;
-    @TableField(value = "createUser")
+    @TableField(value = "create_user")
     private String createUser;
-    @TableField(value = "updateTime")
+    @TableField(value = "update_time", updateStrategy = FieldStrategy.IGNORED)
     private Date updateTime;
-    @TableField(value = "updateUser")
+    @TableField(value = "update_user")
     private String updateUser;
+    @Version
     @TableField(value = "version")
     private Integer version;
 }
