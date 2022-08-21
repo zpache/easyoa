@@ -19,7 +19,8 @@
         <mybatis.starter.version>2.2.2</mybatis.starter.version>
         <druid.starter.version>1.2.11</druid.starter.version>
         <commons.pool2.version>2.11.1</commons.pool2.version>
-        <fastjson.version>1.2.78</fastjson.version>
+        <fastjson.version>2.0.10</fastjson.version>
+        <mybatis.plus.version>3.5.2</mybatis.plus.version>
     </properties>
 
     <dependencies>
@@ -43,11 +44,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>${mybatis.starter.version}</version>
         </dependency>
 
         <dependency>
@@ -81,6 +77,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>${mybatis.plus.version}</version>
         </dependency>
 
     </dependencies>
