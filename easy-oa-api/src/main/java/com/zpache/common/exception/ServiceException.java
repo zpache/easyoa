@@ -2,7 +2,7 @@ package com.zpache.common.exception;
 
 /**
  * @desc:
- * @author: wang bing
+ * @author: zpache
  * @createTime: 2022/8/24 00:13
  */
 public class ServiceException extends RuntimeException{

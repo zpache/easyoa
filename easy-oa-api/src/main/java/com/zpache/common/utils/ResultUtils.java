@@ -4,7 +4,7 @@ import com.zpache.common.result.Result;
 
 /**
  * @desc:
- * @author: wang bing
+ * @author: zpache
  * @createTime: 2022/8/24 00:03
  */
 public class ResultUtils {
