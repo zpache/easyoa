@@ -33,3 +33,4 @@ build/
 .vscode/
 
 logs
+/easy-oa-web/node_modules/
