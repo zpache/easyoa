@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
  * @createTime: 2022/8/20 12:40
  */
 @RestController
-@RequestMapping("system/role")
+@RequestMapping("api/role")
 public class RoleController {
 }

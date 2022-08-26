@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
  * @createTime: 2022/8/20 12:43
  */
 @RestController
-@RequestMapping("system/monitor")
+@RequestMapping("api/monitor")
 public class MonitorController {
 }

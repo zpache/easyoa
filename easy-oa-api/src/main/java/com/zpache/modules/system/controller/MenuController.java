@@ -17,7 +17,7 @@ import java.util.List;
  * @createTime: 2022/8/20 12:40
  */
 @RestController
-@RequestMapping("system/menu")
+@RequestMapping("api/menu")
 public class MenuController {
 
     @Resource
