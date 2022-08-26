@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zpache.common.exception.ServiceException;
+import com.zpache.common.utils.StringUtils;
 import com.zpache.entity.SysUser;
 import com.zpache.mapper.SysUserMapper;
 import com.zpache.modules.system.form.UserForm;
@@ -27,9 +28,9 @@ public class UserServiceImpl implements UserService {
     public Page<SysUser> list(UserForm userForm) {
         Page pageParam = new Page(userForm.getPageNum(), userForm.getPageSize());
         LambdaQueryWrapper<SysUser> queryWrapper = new QueryWrapper<SysUser>().lambda()
-                .like(SysUser::getName, userForm.getName())
-                .eq(SysUser::getMobile, userForm.getMobile())
-                .eq(SysUser::getWorkNo, userForm.getWorkNo());
+                .like(StringUtils.isNotBlank(userForm.getName()), SysUser::getName, userForm.getName())
+                .eq(StringUtils.isNotBlank(userForm.getMobile()), SysUser::getMobile, userForm.getMobile())
+                .eq(StringUtils.isNotBlank(userForm.getWorkNo()), SysUser::getWorkNo, userForm.getWorkNo());
         return sysUserMapper.selectPage(pageParam, queryWrapper);
     }
 
