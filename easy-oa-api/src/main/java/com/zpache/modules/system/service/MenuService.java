@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * @desc:
- * @author: wang bing
+ * @author: zpache
  * @createTime: 2022/8/24 00:30
  */
 public interface MenuService {

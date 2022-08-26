@@ -5,7 +5,7 @@ import com.zpache.entity.SysUser;
 
 /**
  * @desc:
- * @author: wang bing
+ * @author: zpache
  * @createTime: 2022/8/26 21:14
  */
 public interface SysUserMapper extends BaseMapper<SysUser> {

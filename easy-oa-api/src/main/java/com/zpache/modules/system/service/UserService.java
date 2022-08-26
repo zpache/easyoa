@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * @desc:
- * @author: wang bing
+ * @author: zpache
  * @createTime: 2022/8/26 21:22
  */
 public interface UserService {

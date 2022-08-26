@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 /**
  * @desc: 密码自动加密类型处理器
- * @author: wang bing
+ * @author: zpache
  * @createTime: 2022/8/26 22:17
  */
 public class PasswordTypeHandler extends BaseTypeHandler<String> {

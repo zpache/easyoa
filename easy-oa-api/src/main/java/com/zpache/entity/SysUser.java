@@ -8,7 +8,7 @@ import java.util.Date;
 
 /**
  * @desc:
- * @author: wang bing
+ * @author: zpache
  * @createTime: 2022/8/26 21:08
  */
 @TableName(value = "sys_user")
