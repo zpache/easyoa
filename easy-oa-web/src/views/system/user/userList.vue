@@ -58,6 +58,18 @@
     @size-change="sizeChange"
   >
   </el-pagination>  
+
+  <el-dialog :title="dialog.title" :visible.sync="dialog.show">
+    <el-form :inline="true" model="modifyUser" v-if="dialog.formVisiable">
+      <el-form-item label="姓名">
+        <el-input v-model="modifyUser.name"></el-input>
+      </el-form-item>
+    </el-form>
+    <div slot="footer" class="dialog-footer">
+    <el-button @click="dialog.show = false">取 消</el-button>
+    <el-button type="primary" @click="saveUser">确 定</el-button>
+  </div>
+  </el-dialog>
   </div>
 </template>
 
@@ -84,11 +96,25 @@ export default {
         pageNum: 1,
         pageSize: 10
       },
+      modifyUser: {
+        name: '',
+        mobile: '',
+        gender: '',
+        loginName: '',
+        depId: '',
+        workNo: ''
+      },
       list: null,
       total: 0,
       pageCount: 0,
       pageSizes: [10,20],
-      listLoading: true
+      listLoading: true,
+      dialog: {
+        mode: '',
+        show: false,
+        title: '',
+        formVisiable: true
+      }
     }
   },
   created() {
@@ -126,7 +152,9 @@ export default {
       }
     },
     onCreate(){
-      console.log("新建员工")
+      this.dialog.mode = 'add'
+      this.dialog.title = '新增用户'
+      this.dialog.show = true
     },
     pageChange(page){
       this.queryUser.pageNum = page
@@ -136,6 +164,9 @@ export default {
       console.log(pageSize)
       this.queryUser.pageSize = pageSize
       this.fetchData()
+    },
+    saveUser(){
+
     }
   }
 }
