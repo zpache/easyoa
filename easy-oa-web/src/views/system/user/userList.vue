@@ -14,7 +14,8 @@
         </el-select>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="onsubmit()" size="small">查询</el-button>
+        <el-button type="primary" icon="el-icon-search" @click="onsubmit()" size="small">查询</el-button>
+        <el-button type="primary" icon="el-icon-edit" @click="onCreate()" size="small">新增</el-button>
         <el-button type="default" @click="onClear()" size="small">重置</el-button>
       </el-form-item>
     </el-form>
@@ -53,6 +54,8 @@
     :total="total"
     :page-count="pageCount"
     :page-sizes="pageSizes"
+    @current-change="pageChange"
+    @size-change="sizeChange"
   >
   </el-pagination>  
   </div>
@@ -114,7 +117,25 @@ export default {
       this.fetchData()
     },
     onClear(){
-
+      this.queryUser = {
+        name: null,
+        mobile: null,
+        status: null,
+        pageNum: 1,
+        pageSize: 10
+      }
+    },
+    onCreate(){
+      console.log("新建员工")
+    },
+    pageChange(page){
+      this.queryUser.pageNum = page
+      this.fetchData()
+    },
+    sizeChange(pageSize){
+      console.log(pageSize)
+      this.queryUser.pageSize = pageSize
+      this.fetchData()
     }
   }
 }
