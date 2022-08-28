@@ -1,5 +1,23 @@
 <template>
   <div class="app-container">
+    <el-form :inline="true" :v-model="queryUser" class="form-inline" size="small">
+      <el-form-item label="姓名">
+        <el-input v-model="queryUser.name" placeholder="姓名"></el-input>
+      </el-form-item>
+      <el-form-item label="手机号码">
+        <el-input v-model="queryUser.mobile" placeholder="手机号码"></el-input>
+      </el-form-item>
+      <el-form-item label="状态">
+        <el-select v-model="queryUser.status" placeholder="状态" clearable>
+          <el-option label="在职" value="0"></el-option>
+          <el-option label="离职" value="1"></el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" @click="onsubmit()" size="small">查询</el-button>
+        <el-button type="default" @click="onClear()" size="small">重置</el-button>
+      </el-form-item>
+    </el-form>
     <el-table
     :data="list"
     stripe
@@ -34,7 +52,7 @@
     layout="sizes,prev,pager,next,jumper,total,slot"
     :total="total"
     :page-count="pageCount"
-    page-sizes="[10,20]"
+    :page-sizes="pageSizes"
   >
   </el-pagination>  
   </div>
@@ -56,9 +74,17 @@ export default {
   },
   data() {
     return {
+      queryUser: {
+        name: null,
+        mobile: null,
+        status: null,
+        pageNum: 1,
+        pageSize: 10
+      },
       list: null,
       total: 0,
       pageCount: 0,
+      pageSizes: [10,20],
       listLoading: true
     }
   },
@@ -68,7 +94,7 @@ export default {
   methods: {
     fetchData() {
       this.listLoading = true
-      userList({'pageNum':1,'pageSize':10}).then(response => {
+      userList(this.queryUser).then(response => {
         this.list = response.data.records
         this.total = response.data.total
         this.pageCount = response.data.pages
@@ -83,6 +109,12 @@ export default {
     },
     deleteUser(row){
       console.log(row);
+    },
+    onsubmit(){
+      this.fetchData()
+    },
+    onClear(){
+
     }
   }
 }

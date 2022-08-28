@@ -30,7 +30,8 @@ public class UserServiceImpl implements UserService {
         LambdaQueryWrapper<SysUser> queryWrapper = new QueryWrapper<SysUser>().lambda()
                 .like(StringUtils.isNotBlank(userForm.getName()), SysUser::getName, userForm.getName())
                 .eq(StringUtils.isNotBlank(userForm.getMobile()), SysUser::getMobile, userForm.getMobile())
-                .eq(StringUtils.isNotBlank(userForm.getWorkNo()), SysUser::getWorkNo, userForm.getWorkNo());
+                .eq(StringUtils.isNotBlank(userForm.getWorkNo()), SysUser::getWorkNo, userForm.getWorkNo())
+                .eq(userForm.getStatus() != null, SysUser::getStatus, userForm.getStatus());
         return sysUserMapper.selectPage(pageParam, queryWrapper);
     }
 
